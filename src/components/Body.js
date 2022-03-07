@@ -1,8 +1,9 @@
 import React from 'react';
+import ImageGallery from './ImageGallery'
 
 class Body extends React.Component {
   render() {
-    return <h3>Body</h3>;
+    return <ImageGallery />;
   }
 }
 

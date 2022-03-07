@@ -1,8 +1,9 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button';
 
 class Footer extends React.Component {
   render() {
-    return <h3>Footer</h3>;
+    return <Button>About Us</Button>;
   }
 }
 
