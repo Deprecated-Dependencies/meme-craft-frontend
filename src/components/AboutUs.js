@@ -2,6 +2,10 @@ import React from 'react';
 import Author from './Author'
 import bradyAlt from '../img/brady-altImage.jpg';
 import brady from '../img/brady.jpg';
+import jeffreyAlt from '../img/jeffrey-altImage.png';
+import jeffrey from '../img/jeffrey.jpg';
+import michaelAlt from '../img/michael-altImage.jpg';
+import michael from '../img/michael.jpg';
 
 class AboutUs extends React.Component {
   render() {
@@ -30,8 +34,8 @@ class AboutUs extends React.Component {
         <Author
           name="Jeffrey Jenkins"
           bio={bios.jeffrey}
-          image=""
-          altImage=""
+          image={jeffrey}
+          altImage={jeffreyAlt}
         />
         <Author
           name="Micha Davis"
@@ -42,8 +46,8 @@ class AboutUs extends React.Component {
         <Author
           name="Michael Campbell"
           bio={bios.michael}
-          image=""
-          altImage=""
+          image={michael}
+          altImage={michaelAlt}
         />
       </>
     );
