@@ -1,6 +1,7 @@
 import { Button } from 'bootstrap';
 import React from 'react';
 import Container from 'react-bootstrap/Container';
+import { Image } from 'react-bootstrap';
 // import MemeEdit from './MemeEdit';
 
 
