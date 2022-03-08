@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, Col } from 'react-bootstrap';
-import deprecated from './deprecated.png'
 import MemeModal from './MemeModal';
 
 class Meme extends React.Component {
@@ -19,13 +18,15 @@ class Meme extends React.Component {
     return (
     <Col>  
       <Card style={{width: "18rem"}}>
-        <Card.Img src={deprecated} onClick={this.clickHandler}/>
+        <Card.Img src={this.props.url} onClick={this.clickHandler}/>
         <Card.Body>
-          {this.props.memeData}
+          {this.props.name}
         </Card.Body>
         <MemeModal 
           show={this.state.showModal}
           handleModalClose={this.handleModalClose}
+          url={this.props.url}
+          name={this.props.name}
         />
       </Card>
     </Col>

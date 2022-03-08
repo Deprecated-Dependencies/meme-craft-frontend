@@ -1,6 +1,5 @@
 import React from 'react';
 import { Modal } from 'react-bootstrap';
-import deprecated from './deprecated.png'
 
 
 class MemeModal extends React.Component {
@@ -12,8 +11,8 @@ class MemeModal extends React.Component {
       </Modal.Header>
       <Modal.Body>
         <img
-          src={deprecated}
-          alt="deprecated"
+          src={this.props.url}
+          alt={this.props.name}
           className='w-100'
         />
       </Modal.Body>
