@@ -1,4 +1,4 @@
-import { Button } from 'bootstrap';
+import { Button } from 'react-bootstrap';
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 import { Image } from 'react-bootstrap';
@@ -14,8 +14,12 @@ class MemeDisplay extends React.Component {
   // }
   render() {
     return( 
-      <Container>
-        <Image src={this.props.url} alt={this.props.name}/>
+      <Container className='w-100'>
+        <Image 
+          className='w-100'
+          src={this.props.url} 
+          alt={this.props.name}
+        />
         {/* { */}
          {/* this.state.show ?  */}
         <Button variant="primary">Edit</Button>
