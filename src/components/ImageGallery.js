@@ -26,7 +26,7 @@ class ImageGallery extends React.Component {
       <h3>Gallery</h3>
       <Container>
         <Row xs={1} sm={2} md={3}> 
-            {cards}
+          {cards}
         </Row>
       </Container>
     </>
