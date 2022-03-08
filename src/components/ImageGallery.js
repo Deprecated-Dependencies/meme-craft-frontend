@@ -1,24 +1,13 @@
 import React from 'react';
-import { Container, Row, Col, Card } from 'react-bootstrap';
-import deprecated from './deprecated.png'
+import { Container, Row } from 'react-bootstrap';
+import Meme from './Meme';
 
 class ImageGallery extends React.Component {
   render() {
     let cardCount = 10;
     let cards = [];
     for (let i = 0; i < cardCount; i++){
-      cards.push(
-        (
-        <Col>  
-          <Card style={{width: "18rem"}}>
-            <Card.Img src={deprecated}/>
-            <Card.Body>
-              {i}
-            </Card.Body>
-          </Card>
-        </Col>
-        )
-      )
+      cards.push(<Meme key={i} memeData={i} />);
     }
 
     return (
