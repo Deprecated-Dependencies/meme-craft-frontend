@@ -1,5 +1,7 @@
 import React from 'react';
 import { Modal } from 'react-bootstrap';
+import MemeEdit from './MemeEdit';
+import MemeDisplay from './MemeDisplay'
 
 
 class MemeModal extends React.Component {
@@ -10,11 +12,11 @@ class MemeModal extends React.Component {
         <h3>Modal</h3>
       </Modal.Header>
       <Modal.Body>
-        <img
-          src={this.props.url}
-          alt={this.props.name}
-          className='w-100'
+        <MemeDisplay 
+        url={this.props.url} 
+        name={this.props.name}
         />
+        <MemeEdit/>
       </Modal.Body>
     </Modal>
     );
