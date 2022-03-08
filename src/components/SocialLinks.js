@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'react-bootstrap';
+import Image from 'react-bootstrap/Image';
 import tumblr from '../img/social-tumblr.png';
 import reddit from '../img/social-reddit.png';
 import pintrest from '../img/social-pintrest.png';
