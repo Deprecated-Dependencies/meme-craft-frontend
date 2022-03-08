@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, Col } from 'react-bootstrap';
-// import deprecated from './deprecated.png'
 import MemeModal from './MemeModal';
 
 class Meme extends React.Component {
@@ -26,6 +25,8 @@ class Meme extends React.Component {
         <MemeModal 
           show={this.state.showModal}
           handleModalClose={this.handleModalClose}
+          url={this.props.url}
+          name={this.props.name}
         />
       </Card>
     </Col>

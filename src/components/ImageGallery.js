@@ -28,15 +28,10 @@ componentDidMount(){
 }
 
   render() {
-    // let cardCount = 10;
-    // let cards = [];
-    //map over array of meme data from the API, create a new card for each object, render url
     let memes = this.state.memes.map(meme => (
       <Meme key={meme.id} url={meme.url} name={meme.name} />
     ))
-    // for (let i = 0; i < cardCount; i++){
-    //   cards.push(<Meme key={i} memeData={i} />);
-    // }
+
     return (
     <>
       <h3>Gallery</h3>
