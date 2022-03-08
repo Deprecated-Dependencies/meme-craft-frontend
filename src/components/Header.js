@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Image } from 'react-bootstrap';
 import Search from './Search';
+import Login from './Login';
 
 class Header extends React.Component {
   render() {
@@ -8,7 +9,7 @@ class Header extends React.Component {
       <header>
         <h3>Header</h3>
         <Image />
-        <Button>Login</Button>
+        <Login />
         <Search />
       </header>
     );
