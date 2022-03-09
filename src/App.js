@@ -25,7 +25,7 @@ class App extends React.Component {
         // As per axios docs we can send an config object to make our call as well
         const config = {
           method: 'get',
-          baseUrl: process.env.REACT_APP_SERVER,
+          baseURL: process.env.REACT_APP_SERVER_URL,
           url: '/token',
           headers: {"Authorization": `Bearer ${jwt}`}
         }
