@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Container, Row } from 'react-bootstrap';
 import Meme from './Meme';
+// import '/app.css';
 
 class ImageGallery extends React.Component {
   constructor(props) {
