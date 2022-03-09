@@ -2,12 +2,32 @@ import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import { withAuth0 } from '@auth0/auth0-react';
 
 class MemeEdit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       currentMeme: ''
+    }
+  }
+  saveToDb = async (meme, boxes) => {
+    console.log(meme);
+    try {
+      let newMeme = {
+        userName: this.props.auth0.user.email,
+        url: meme.url,
+        page_url: meme.page_url,
+        boxes: boxes,
+        template: this.props.template
+      }
+      let url = process.env.REACT_APP_SERVER_URL;
+      let storedMeme = await axios.post(url, newMeme);
+      console.log(storedMeme);
+
+    } catch (error) {
+      console.log(error); 
+      
     }
   }
   sendMemeRequest = async (requestBody) => {
@@ -21,6 +41,7 @@ class MemeEdit extends React.Component {
       this.setState({
         currentMeme: meme
       })
+      this.saveToDb(meme, requestBody.boxes);
     } catch (error) {
       console.log(error.message);
     }
@@ -40,8 +61,6 @@ class MemeEdit extends React.Component {
     }
     this.sendMemeRequest(requestObj);
   }
-
-
 
   render() {
     let boxCount = this.props.template.box_count;
@@ -65,4 +84,4 @@ class MemeEdit extends React.Component {
   }
 }
 
-export default MemeEdit;
+export default withAuth0(MemeEdit);
