@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 
+const LoginButton = () => {
+  const { loginWithRedirect } = useAuth0();
 
-class Login extends React.Component {
-  render() {
-    return <h3>Login</h3>;
-  }
-}
+  return <button onClick={() => loginWithRedirect()}>Log In</button>;
+};
 
-export default Login;
+export default LoginButton;
