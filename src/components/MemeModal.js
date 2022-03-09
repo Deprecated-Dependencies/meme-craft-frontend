@@ -28,7 +28,13 @@ handleUpdateCurrentMeme = (currentMeme) => {
           <h3>Modal</h3>
         </Modal.Header>
         <Modal.Body>
-          <SocialLinks />
+          {
+          this.state.currentMeme &&
+          <SocialLinks
+          url={this.state.currentMeme.url}
+          page_url={this.state.currentMeme.page_url}
+           />
+          }
           <MemeDisplay
             url={this.props.url}
             name={this.props.name}

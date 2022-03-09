@@ -8,33 +8,33 @@ import facebook from '../img/social-fb.png';
 
 class SocialLinks extends React.Component {
   render() {
-    let memeURL = 'https://imgflip.com/i/67xfoh';
-    let imgURL = 'https://i.imgflip.com/67xfoh.jpg';
+    let page_url = this.props.page_url;
+    let url = this.props.url;
     let socialArray = [
       {
         img: reddit,
         site: 'Reddit',
-        link: `https://www.reddit.com/submit?url=${imgURL}`
+        link: `https://www.reddit.com/submit?url=${url}`
       },
       {
         img: tumblr,
         site: 'Tumblr',
-        link: `http://tumblr.com/widgets/share/tool?canonicalUrl=${imgURL}`
+        link: `http://tumblr.com/widgets/share/tool?canonicalUrl=${url}`
       },
       {
         img: pintrest,
         site: 'Pintrest',
-        link: `https://www.pinterest.com/pin/create/button/?url=${memeURL}&media=${imgURL}&description=Next%20stop%3A%20Pinterest`
+        link: `https://www.pinterest.com/pin/create/button/?url=${page_url}&media=${url}&description=Next%20stop%3A%20Pinterest`
       },
       {
         img: twitter,
         site: 'Twitter',
-        link: `https://twitter.com/intent/tweet?url=${imgURL}`
+        link: `https://twitter.com/intent/tweet?url=${url}`
       },
       {
         img: facebook,
         site: 'Facebook',
-        link: `https://www.facebook.com/sharer/sharer.php?u=${imgURL}`
+        link: `https://www.facebook.com/sharer/sharer.php?u=${url}`
       }
     ]
 
