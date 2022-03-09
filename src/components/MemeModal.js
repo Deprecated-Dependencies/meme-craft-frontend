@@ -6,6 +6,21 @@ import SocialLinks from './SocialLinks';
 
 
 class MemeModal extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      currentMeme: '',
+      template: this.props.template
+    };
+  }
+
+handleUpdateCurrentMeme = (currentMeme) => {
+  this.setState({
+    currentMeme: currentMeme,
+    template: null
+  });
+}
+
   render() {
     return (
       <Modal show={this.props.show} onHide={this.props.handleModalClose}>
@@ -17,9 +32,15 @@ class MemeModal extends React.Component {
           <MemeDisplay
             url={this.props.url}
             name={this.props.name}
-            template={this.props.template}
+            template={this.state.template}
+            currentMeme={this.state.currentMeme}
           />
-          <MemeEdit template={this.props.template} />
+          { this.state.template &&
+          <MemeEdit 
+          template={this.state.template}
+          handleUpdateCurrentMeme={this.handleUpdateCurrentMeme}
+          />
+        }
         </Modal.Body>
       </Modal>
     );
