@@ -1,36 +1,17 @@
-import React from 'react';
-import axios from 'axios';
-import { Container, Row } from 'react-bootstrap';
-import Meme from './Meme';
+import React from "react";
+import { Container, Row } from "react-bootstrap";
+import Meme from "./Meme";
 
 class ImageGallery extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      memes: []
-    }
-  }
-
-  getMemes = async () => {
-    try {
-      let results = await axios(`${process.env.REACT_APP_SERVER_URL}/memes`);
-      this.setState({
-        memes: results.data.data.memes
-      })
-    } catch (error) {
-      console.log('Error getting memes', error.message)
-    }
-    console.log(this.state.memes);
-  }
 
   componentDidMount() {
-    this.getMemes();
+    this.props.getMemes();
   }
 
   render() {
-    let memes = this.state.memes.map(meme => (
+    let memes = this.props.memes.map((meme) => (
       <Meme key={meme.id} url={meme.url} name={meme.name} template={meme} />
-    ))
+    ));
 
     return (
       <>

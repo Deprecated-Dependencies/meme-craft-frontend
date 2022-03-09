@@ -12,7 +12,6 @@ class MemeEdit extends React.Component {
     }
   }
   saveToDb = async (meme, boxes) => {
-    // console.log(meme);
     try {
       let newMeme = {
         userName: this.props.auth0.user.email,
@@ -21,10 +20,8 @@ class MemeEdit extends React.Component {
         boxes: boxes,
         template: this.props.template
       }
-      // console.log(newMeme);
       let url = `${process.env.REACT_APP_SERVER_URL}/memeDB`;
       let storedMeme = await axios.post(url, newMeme);
-      // console.log(storedMeme);
       this.props.handleUpdateCurrentMeme(storedMeme.data);
     } catch (error) {
       console.log(error); 
@@ -79,7 +76,6 @@ class MemeEdit extends React.Component {
       <Form onSubmit={this.handleSaveMeme}>
         {formControls}
         <Button type='submit'>Save</Button>
-        {/* <Button type='submit'>Preview</Button> */}
       </Form>
     )
   }
