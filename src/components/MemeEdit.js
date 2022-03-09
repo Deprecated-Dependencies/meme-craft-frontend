@@ -48,12 +48,10 @@ class MemeEdit extends React.Component {
     let formControls = [];
     for (let i = 1; i <= boxCount; i++) {
       formControls.push((
-        <>
-          <Form.Group key={i} controlId={`num${i}box`}>
-            <Form.Label>box{i}</Form.Label>
-            <Form.Control type={`${i}box`} />
-          </Form.Group>
-        </>
+        <Form.Group key={i} controlId={`num${i}box`}>
+          <Form.Label>box{i}</Form.Label>
+          <Form.Control type={`${i}box`} />
+        </Form.Group>
       ))
     }
 
