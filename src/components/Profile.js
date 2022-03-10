@@ -14,7 +14,7 @@ class Profile extends React.Component {
   //Template for user memes needs to exist via the same path as the api template!
   getUserMemes = async () => {
     try {
-      let userMemes = await axios.get(`${process.env.REACT_APP_SERVER_URL}/memeDB?name=${this.props.auth0.user.email}`)
+      let userMemes = await axios.get(`${process.env.REACT_APP_SERVER_URL}/memeDB?userName=${this.props.auth0.user.email}`)
       this.setState({
         memes: userMemes.data
       })
