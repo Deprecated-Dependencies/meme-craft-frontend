@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Col } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import MemeModal from './MemeModal';
 
 class Meme extends React.Component {
@@ -16,8 +16,8 @@ class Meme extends React.Component {
 
   render() {
     return (
-      <Col>
-        <Card style={{ width: "18rem" }}>
+      <div>
+        <Card>
           <Card.Img src={this.props.url} onClick={this.clickHandler} />
           <Card.Body>
             {this.props.name}
@@ -30,7 +30,7 @@ class Meme extends React.Component {
             template={this.props.template}
           />
         </Card>
-      </Col>
+      </div>
     );
   }
 }

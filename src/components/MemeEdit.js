@@ -75,7 +75,7 @@ class MemeEdit extends React.Component {
     return (
       <Form onSubmit={this.handleSaveMeme}>
         {formControls}
-        <Button type='submit'>Save</Button>
+        <Button className = "mt-1" type='submit'>Save</Button>
       </Form>
     )
   }
