@@ -8,8 +8,9 @@ import { Image } from 'react-bootstrap';
 class MemeDisplay extends React.Component {
 
   render() {
-    let url = this.props.currentMeme ? this.props.currentMeme.url : this.props.url
-    console.log(this.props.currentMeme);
+    let url = this.props.currentMeme ? 
+      this.props.currentMeme.url : 
+      this.props.url
     return( 
       <Container className='w-100'>
         <Image 
@@ -17,10 +18,6 @@ class MemeDisplay extends React.Component {
           src={url} 
           alt={this.props.name}
         />
-        {
-          this.props.currentMeme &&
-        <Button variant="primary">Edit</Button> 
-        }
       </Container>
     );
   }
