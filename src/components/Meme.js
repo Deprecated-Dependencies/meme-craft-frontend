@@ -15,7 +15,7 @@ class Meme extends React.Component {
   handleModalClose = (event) => this.setState({ showModal: false })
 
   render() {
-    console.log(this.props.template);
+
     return (
       <div>
         <Card>
@@ -28,6 +28,7 @@ class Meme extends React.Component {
             handleModalClose={this.handleModalClose}
             url={this.props.url}
             name={this.props.name}
+            userMeme={this.props.userMeme}
             template={this.props.template}
           />
         </Card>
