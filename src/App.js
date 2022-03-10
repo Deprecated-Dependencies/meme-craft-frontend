@@ -8,7 +8,6 @@ import React from 'react';
 import axios from 'axios';
 import { withAuth0 } from '@auth0/auth0-react'
 
-
 class App extends React.Component {
   printToken = async () => {
     if(this.props.auth0.isAuthenticated){
