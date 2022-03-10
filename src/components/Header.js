@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Button, Container } from 'react-bootstrap';
+import { Image, Button } from 'react-bootstrap';
 import Search from './Search';
 import Login from './Login';
 import LogoutButton from './LogoutButton'
