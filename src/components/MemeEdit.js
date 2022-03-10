@@ -24,8 +24,8 @@ class MemeEdit extends React.Component {
       let storedMeme = await axios.post(url, newMeme);
       this.props.handleUpdateCurrentMeme(storedMeme.data);
     } catch (error) {
-      console.log(error); 
-      
+      console.log(error);
+
     }
   }
   sendMemeRequest = async (requestBody) => {
@@ -75,7 +75,7 @@ class MemeEdit extends React.Component {
     return (
       <Form onSubmit={this.handleSaveMeme}>
         {formControls}
-        <Button className = "mt-1" type='submit'>Save</Button>
+        <Button className="mt-1" type='submit'>Save</Button>
       </Form>
     )
   }

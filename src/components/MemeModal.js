@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 
 
 class MemeModal extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       currentMeme: '',
@@ -16,12 +16,12 @@ class MemeModal extends React.Component {
     };
   }
 
-handleUpdateCurrentMeme = (currentMeme) => {
-  this.setState({
-    currentMeme: currentMeme,
-    displayEditForm: false
-  });
-}
+  handleUpdateCurrentMeme = (currentMeme) => {
+    this.setState({
+      currentMeme: currentMeme,
+      displayEditForm: false
+    });
+  }
 
   render() {
     return (
@@ -31,11 +31,11 @@ handleUpdateCurrentMeme = (currentMeme) => {
         </Modal.Header>
         <Modal.Body>
           {
-          this.state.currentMeme &&
-          <SocialLinks
-          url={this.state.currentMeme.url}
-          page_url={this.state.currentMeme.page_url}
-           />
+            this.state.currentMeme &&
+            <SocialLinks
+              url={this.state.currentMeme.url}
+              page_url={this.state.currentMeme.page_url}
+            />
           }
           <MemeDisplay
             url={this.props.url}
@@ -44,12 +44,12 @@ handleUpdateCurrentMeme = (currentMeme) => {
             currentMeme={this.state.currentMeme}
           />
           {this.state.displayEditForm ?
-          <MemeEdit 
-          template={this.state.template}
-          handleUpdateCurrentMeme={this.handleUpdateCurrentMeme}
-          /> : <Button onClick={() => this.setState({displayEditForm: true})}>Edit</Button>
+            <MemeEdit
+              template={this.state.template}
+              handleUpdateCurrentMeme={this.handleUpdateCurrentMeme}
+            /> : <Button onClick={() => this.setState({ displayEditForm: true })}>Edit</Button>
 
-        }
+          }
         </Modal.Body>
       </Modal>
     );

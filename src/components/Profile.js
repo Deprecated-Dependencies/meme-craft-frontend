@@ -11,21 +11,21 @@ class Profile extends React.Component {
       memes: []
     }
   }
-//Template for user memes needs to exist via the same path as the api template!
-getUserMemes = async () => {
-  try{
-    let userMemes = await axios.get(`${process.env.REACT_APP_SERVER_URL}/memeDB?name=${this.props.auth0.user.email}`)
-    this.setState({
-      memes: userMemes.data
-    })
-    console.log(userMemes);
-  }catch(error){
-    console.log(error)
+  //Template for user memes needs to exist via the same path as the api template!
+  getUserMemes = async () => {
+    try {
+      let userMemes = await axios.get(`${process.env.REACT_APP_SERVER_URL}/memeDB?name=${this.props.auth0.user.email}`)
+      this.setState({
+        memes: userMemes.data
+      })
+      console.log(userMemes);
+    } catch (error) {
+      console.log(error)
+    }
   }
-}
 
-render() {
-      console.log(this.props.auth0.user);
+  render() {
+    console.log(this.props.auth0.user);
     return (
       <>
 
@@ -33,13 +33,13 @@ render() {
         <AuthProfile />
         {
           this.props.auth0.isAuthenticated &&
-        <ImageGallery 
-        getMemes={this.getUserMemes}
-        memes={this.state.memes}
-        />
+          <ImageGallery
+            getMemes={this.getUserMemes}
+            memes={this.state.memes}
+          />
         }
       </>
-      );
+    );
   }
 }
 
