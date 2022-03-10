@@ -67,20 +67,20 @@ class MemeEdit extends React.Component {
   }
 
   render() {
-    console.log('MemeEdit state: ',this.state);
+    console.log('MemeEdit state: ', this.state);
     let boxCount = this.props.template.box_count;
     let formControls = [];
     for (let i = 1; i <= boxCount; i++) {
       formControls.push((
         <Form.Group key={i} controlId={`num${i}box`}>
-          <Form.Label>box{i}</Form.Label>
+          <Form.Label>Text Box {i}</Form.Label>
           <Form.Control type={`${i}box`} />
         </Form.Group>
       ))
     }
 
     return (
-      <Form onSubmit={this.handleSaveMeme}>
+      <Form onSubmit={this.handleSaveMeme} className="float-end">
         {formControls}
         <Button className="mt-1" type='submit'>Save</Button>
         {
