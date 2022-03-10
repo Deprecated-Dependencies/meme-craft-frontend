@@ -12,6 +12,28 @@ class MemeEdit extends React.Component {
     }
   }
 
+  sendMemePUT = async (meme, boxes) => {
+    try{
+      // requestObj has shape {template_id: String, boxes: Array}
+      // boxes is an Array of objects with shape { text: String }
+      let id = this.props.currentMeme._id;
+
+      let url = `${process.env.REACT_APP_SERVER_URL}/memeDB/${id}`;
+
+      let memeToUpdate = { 
+        ...this.state.currentMeme,
+        url: meme.url,
+        page_url: meme.page_url,
+        boxes: boxes,
+      }
+
+      let storedMeme = await axios.put(url, memeToUpdate);
+      this.props.handleUpdateCurrentMeme(storedMeme.data)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   saveToDb = async (meme, boxes) => {
     try {
       let newMeme = {
@@ -26,7 +48,6 @@ class MemeEdit extends React.Component {
       this.props.handleUpdateCurrentMeme(storedMeme.data);
     } catch (error) {
       console.log(error);
-
     }
   }
 
@@ -38,10 +59,14 @@ class MemeEdit extends React.Component {
         data: requestBody,
         header: { 'Content-type': 'application/json' }
       })
+      if (this.state.currentMeme === '') {
+        this.saveToDb(meme.data.data, requestBody.boxes);
+      } else {
+        this.sendMemePUT(meme.data.data, requestBody.boxes)
+      }
       this.setState({
         currentMeme: meme.data.data
       })
-      this.saveToDb(meme.data.data, requestBody.boxes);
     } catch (error) {
       console.log(error.message);
     }
@@ -59,18 +84,15 @@ class MemeEdit extends React.Component {
       template_id: this.props.template.id,
       boxes: boxes
     }
-    if (this.state.currentMeme === '') {
-      this.sendMemeRequest(requestObj)
-    } else {
-      console.log('Meme PUT request under construction')
-    }
+    this.sendMemeRequest(requestObj)
   }
 
-  handleDeleteMeme = async (id) => {
+  handleDeleteMeme = async (event, id) => {
     try{
       let url = `${process.env.REACT_APP_SERVER_URL}/memeDB/${id}`;
       await axios.delete(url);
       this.props.refreshGallery();
+      this.props.handleModalClose(event);
     }catch(error){
       console.log(error.message);
     }
@@ -84,7 +106,10 @@ class MemeEdit extends React.Component {
       formControls.push((
         <Form.Group key={i} controlId={`num${i}box`}>
           <Form.Label>Text Box {i}</Form.Label>
-          <Form.Control type={`${i}box`} />
+          <Form.Control 
+            type={`${i}box`} 
+            defaultValue={this.state.currentMeme.boxes ? this.state.currentMeme.boxes[i-1].text : ''}
+          />
         </Form.Group>
       ))
     }
@@ -95,7 +120,7 @@ class MemeEdit extends React.Component {
         <Button className="mt-1" type='submit'>Save</Button>
         {
           this.state.currentMeme &&
-          <Button onClick={() => this.handleDeleteMeme(this.state.currentMeme._id)} className='mt-1 btn btn-danger float-end'>Delete</Button>
+          <Button onClick={(event) => this.handleDeleteMeme(event, this.state.currentMeme._id)} className='mt-1 btn btn-danger float-end'>Delete</Button>
         }
       </Form>
     )
