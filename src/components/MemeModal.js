@@ -10,7 +10,7 @@ class MemeModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentMeme: '',
+      currentMeme: this.props.userMeme || '',
       template: this.props.template,
       displayEditForm: false
     };
@@ -24,12 +24,10 @@ class MemeModal extends React.Component {
   }
 
   render() {
+    console.log('MemeModal state: ',this.state);
     return (
       <Modal show={this.props.show} onHide={this.props.handleModalClose}>
         <Modal.Header closeButton>
-          <h3>Modal</h3>
-        </Modal.Header>
-        <Modal.Body>
           {
             this.state.currentMeme &&
             <SocialLinks
@@ -37,6 +35,8 @@ class MemeModal extends React.Component {
               page_url={this.state.currentMeme.page_url}
             />
           }
+        </Modal.Header>
+        <Modal.Body>
           <MemeDisplay
             url={this.props.url}
             name={this.props.name}
@@ -46,8 +46,10 @@ class MemeModal extends React.Component {
           {this.state.displayEditForm ?
             <MemeEdit
               template={this.state.template}
+              currentMeme={this.state.currentMeme}
               handleUpdateCurrentMeme={this.handleUpdateCurrentMeme}
-            /> : <Button onClick={() => this.setState({ displayEditForm: true })}>Edit</Button>
+            /> : 
+            <Button onClick={() => this.setState({ displayEditForm: true })}>Edit</Button>
 
           }
         </Modal.Body>
