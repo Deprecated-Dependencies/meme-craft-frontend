@@ -8,9 +8,10 @@ class MemeEdit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentMeme: ''
+      currentMeme: this.props.currentMeme || ''
     }
   }
+
   saveToDb = async (meme, boxes) => {
     try {
       let newMeme = {
@@ -28,6 +29,7 @@ class MemeEdit extends React.Component {
 
     }
   }
+
   sendMemeRequest = async (requestBody) => {
     try {
       let meme = await axios({
@@ -57,10 +59,15 @@ class MemeEdit extends React.Component {
       template_id: this.props.template.id,
       boxes: boxes
     }
-    this.sendMemeRequest(requestObj);
+    if (this.state.currentMeme === '') {
+      this.sendMemeRequest(requestObj)
+    } else {
+      console.log('Meme PUT request under construction')
+    }
   }
 
   render() {
+    console.log('MemeEdit state: ',this.state);
     let boxCount = this.props.template.box_count;
     let formControls = [];
     for (let i = 1; i <= boxCount; i++) {
