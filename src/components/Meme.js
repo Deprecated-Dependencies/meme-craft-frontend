@@ -30,6 +30,7 @@ class Meme extends React.Component {
             name={this.props.name}
             userMeme={this.props.userMeme}
             template={this.props.template}
+            refreshGallery={this.props.refreshGallery}
           />
         </Card>
       </div>

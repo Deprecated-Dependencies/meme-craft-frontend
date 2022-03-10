@@ -66,8 +66,18 @@ class MemeEdit extends React.Component {
     }
   }
 
+  handleDeleteMeme = async (id) => {
+    try{
+      let url = `${process.env.REACT_APP_SERVER_URL}/memeDB/${id}`;
+      await axios.delete(url);
+      this.props.refreshGallery();
+    }catch(error){
+      console.log(error.message);
+    }
+    
+  }
+
   render() {
-    console.log('MemeEdit state: ', this.state);
     let boxCount = this.props.template.box_count;
     let formControls = [];
     for (let i = 1; i <= boxCount; i++) {
@@ -85,7 +95,7 @@ class MemeEdit extends React.Component {
         <Button className="mt-1" type='submit'>Save</Button>
         {
           this.state.currentMeme &&
-          <Button className='mt-1 btn btn-danger float-end'>Placeholder Delete</Button>
+          <Button onClick={() => this.handleDeleteMeme(this.state.currentMeme._id)} className='mt-1 btn btn-danger float-end'>Delete</Button>
         }
       </Form>
     )
