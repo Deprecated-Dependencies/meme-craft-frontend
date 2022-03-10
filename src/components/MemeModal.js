@@ -48,6 +48,7 @@ class MemeModal extends React.Component {
               template={this.state.template}
               currentMeme={this.state.currentMeme}
               handleUpdateCurrentMeme={this.handleUpdateCurrentMeme}
+              refreshGallery={this.props.refreshGallery}
             /> :
             <Button onClick={() => this.setState({ displayEditForm: true })} >Edit</Button>
 
