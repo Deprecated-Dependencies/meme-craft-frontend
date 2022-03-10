@@ -1,5 +1,5 @@
 import React from "react";
-// import { Container, Row } from "react-bootstrap";
+
 import Meme from "./Meme";
 import Masonry from 'react-masonry-css';
 
@@ -9,22 +9,24 @@ class ImageGallery extends React.Component {
     this.props.getMemes();
   }
 
+  
+
   render() {
     let memes = this.props.memes.map((meme) => (
       <Meme key={meme.id} url={meme.url} name={meme.name} template={meme} />
     ));
 
+    const breakpointColumnsObj = {
+      default: 4,
+      1100: 3,
+      700: 2,
+      500: 1
+    };
+
     return (
       <>
-        {/* <h3>Gallery</h3>
-        <Container>
-          <Row xs={1} sm={2} md={3}>
-            {memes}
-          </Row>
-        </Container> */}
-
         <Masonry
-          breakpointCols={4}
+          breakpointCols={breakpointColumnsObj}
           className="my-masonry-grid"
           columnClassName="my-masonry-grid_column">
           {memes}
