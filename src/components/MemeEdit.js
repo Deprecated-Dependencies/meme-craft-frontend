@@ -108,7 +108,7 @@ class MemeEdit extends React.Component {
           <Form.Label>Text Box {i}</Form.Label>
           <Form.Control 
             type={`${i}box`} 
-            defaultValue={this.state.currentMeme.boxes ? this.state.currentMeme.boxes[i-1].text : ''}
+            defaultValue={this.state.currentMeme?.boxes ? this.state.currentMeme.boxes[i-1].text : ''}
           />
         </Form.Group>
       ))
