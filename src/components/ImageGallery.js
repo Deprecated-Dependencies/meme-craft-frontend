@@ -1,6 +1,7 @@
 import React from "react";
-import { Container, Row } from "react-bootstrap";
+// import { Container, Row } from "react-bootstrap";
 import Meme from "./Meme";
+import Masonry from 'react-masonry-css';
 
 class ImageGallery extends React.Component {
 
@@ -15,12 +16,19 @@ class ImageGallery extends React.Component {
 
     return (
       <>
-        <h3>Gallery</h3>
+        {/* <h3>Gallery</h3>
         <Container>
           <Row xs={1} sm={2} md={3}>
             {memes}
           </Row>
-        </Container>
+        </Container> */}
+
+        <Masonry
+          breakpointCols={4}
+          className="my-masonry-grid"
+          columnClassName="my-masonry-grid_column">
+          {memes}
+        </Masonry>
       </>
     );
   }
