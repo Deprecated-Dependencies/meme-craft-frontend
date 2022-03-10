@@ -1,6 +1,7 @@
 import './App.css';
 import Header from './components/Header';
 import Body from './components/Body';
+import Footer from './components/Footer'
 import Profile from './components/Profile';
 import AboutUs from './components/AboutUs';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -10,7 +11,7 @@ import { withAuth0 } from '@auth0/auth0-react'
 
 class App extends React.Component {
   printToken = async () => {
-    if(this.props.auth0.isAuthenticated){
+    if (this.props.auth0.isAuthenticated) {
       // Get Token
       const res = await this.props.auth0.getIdTokenClaims();
 
@@ -26,7 +27,7 @@ class App extends React.Component {
           method: 'get',
           baseURL: process.env.REACT_APP_SERVER_URL,
           url: '/token',
-          headers: {"Authorization": `Bearer ${jwt}`}
+          headers: { "Authorization": `Bearer ${jwt}` }
         }
         let responseData = await axios(config);
         console.log(responseData.data);
@@ -47,6 +48,7 @@ class App extends React.Component {
             <Route path="/about" element={<AboutUs />} />
           </Routes>
         </Router>
+        <Footer />
       </>
     );
   }

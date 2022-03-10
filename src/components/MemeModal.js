@@ -24,24 +24,25 @@ class MemeModal extends React.Component {
   }
 
   render() {
-    console.log('MemeModal state: ', this.state);
+    //console.log('MemeModal state: ', this.state);
     return (
-      <Modal show={this.props.show} onHide={this.props.handleModalClose}>
-        <Modal.Header closeButton></Modal.Header>
-        {
-          this.state.currentMeme &&
-          <SocialLinks
-            url={this.state.currentMeme.url}
-            page_url={this.state.currentMeme.page_url}
-          />
-        }
-        <Modal.Body>
+      <Modal show={this.props.show} onHide={this.props.handleModalClose} contentClassName='w-auto'>
+        <Modal.Header closeButton>{this.props.name}</Modal.Header>
+
+        <Modal.Body className="d-flex justify-content-evenly align-items-start">
           <MemeDisplay
             url={this.props.url}
             name={this.props.name}
             template={this.state.template}
             currentMeme={this.state.currentMeme}
           />
+          {
+            this.state.currentMeme &&
+            <SocialLinks
+              url={this.state.currentMeme.url}
+              page_url={this.state.currentMeme.page_url}
+            />
+          }
           {this.state.displayEditForm ?
             <MemeEdit
               template={this.state.template}
@@ -49,7 +50,7 @@ class MemeModal extends React.Component {
               handleUpdateCurrentMeme={this.handleUpdateCurrentMeme}
               refreshGallery={this.props.refreshGallery}
             /> :
-            <Button onClick={() => this.setState({ displayEditForm: true })}>Edit</Button>
+            <Button onClick={() => this.setState({ displayEditForm: true })} >Edit</Button>
 
           }
         </Modal.Body>
