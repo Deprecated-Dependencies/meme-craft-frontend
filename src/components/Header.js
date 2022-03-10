@@ -9,8 +9,9 @@ class Header extends React.Component {
   render() {
     return (
       <header>
+
         <a href="/" style={{ textDecoration: "none" }}>
-          <h1 style={{ textAlign: "center" }}>MemeCraft</h1>
+          <h1 style={{ textAlign: "center", marginTop: "3%" }}>MemeCraft</h1>
         </a>
         <Image />
         {
