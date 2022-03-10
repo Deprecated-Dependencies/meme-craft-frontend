@@ -9,7 +9,9 @@ class Header extends React.Component {
   render() {
     return (
       <header>
-        <h1 style={{ textAlign: "center" }}>MemeCraft</h1>
+        <a href="/" style={{ textDecoration: "none" }}>
+          <h1 style={{ textAlign: "center" }}>MemeCraft</h1>
+        </a>
         <Image />
         {
           this.props.auth0.isAuthenticated ?

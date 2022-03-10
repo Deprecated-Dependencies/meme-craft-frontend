@@ -17,9 +17,8 @@ class Body extends React.Component {
         memes: results.data.data.memes
       })
     } catch (error) {
-      console.log('Error getting memes', error.message)
+      console.log('Error getting memes ', error.message || 'Unknown error')
     }
-    console.log(this.state.memes);
   }
 
 
