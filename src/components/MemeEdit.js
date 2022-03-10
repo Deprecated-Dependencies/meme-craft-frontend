@@ -83,6 +83,10 @@ class MemeEdit extends React.Component {
       <Form onSubmit={this.handleSaveMeme}>
         {formControls}
         <Button className="mt-1" type='submit'>Save</Button>
+        {
+          this.state.currentMeme &&
+          <Button className='mt-1 btn btn-danger float-end'>Placeholder Delete</Button>
+        }
       </Form>
     )
   }
