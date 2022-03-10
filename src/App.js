@@ -7,8 +7,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import React from 'react';
 import axios from 'axios';
 import { withAuth0 } from '@auth0/auth0-react'
-import LogoutButton from './components/LogoutButton';
-// import Masonry from 'react-masonry-css';
 
 class App extends React.Component {
   printToken = async () => {
@@ -42,15 +40,6 @@ class App extends React.Component {
     return (
       <>
         <Header />
-        {this.props.auth0.isAuthenticated ?
-          (
-          <>
-            <button onClick={this.printToken}>Button</button>
-            <LogoutButton />
-          </>
-          ) :
-          null
-        }
         <Router>
           <Routes>
             <Route path="/" element={<Body />} />
