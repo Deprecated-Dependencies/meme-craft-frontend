@@ -39,15 +39,15 @@ class SocialLinks extends React.Component {
     ]
 
     return (
-      <>
+      <div className="d-flex flex-column">
         {socialArray.map(site =>
           <a
             href={site.link}
             key={site.site}>
-            <Image src={site.img} alt={`Share on ${site.site}`} />
+            <Image src={site.img} alt={`Share on ${site.site}`} className='w-50 mb-1' />
           </a>
         )}
-      </>
+      </div>
     )
   }
 }
