@@ -9,11 +9,22 @@ class ImageGallery extends React.Component {
     this.props.getMemes();
   }
 
-  
-
   render() {
     let memes = this.props.memes.map((meme) => (
-      <Meme key={meme.id} url={meme.url} name={meme.name} template={meme} />
+      meme.hasOwnProperty('template') ? 
+      <Meme 
+        key={meme._id} 
+        url={meme.url} 
+        name={meme.template.name} 
+        template={meme.template} 
+        userMeme={meme}
+      /> :
+      <Meme 
+        key={meme.id} 
+        url={meme.url}
+        name={meme.name}
+        template={meme}
+      />
     ));
 
     const breakpointColumnsObj = {
@@ -24,14 +35,12 @@ class ImageGallery extends React.Component {
     };
 
     return (
-      <>
-        <Masonry
-          breakpointCols={breakpointColumnsObj}
-          className="my-masonry-grid"
-          columnClassName="my-masonry-grid_column">
-          {memes}
-        </Masonry>
-      </>
+      <Masonry
+        breakpointCols={breakpointColumnsObj}
+        className="my-masonry-grid"
+        columnClassName="my-masonry-grid_column">
+        {memes}
+      </Masonry>
     );
   }
 }
