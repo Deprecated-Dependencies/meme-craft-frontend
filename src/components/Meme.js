@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Col } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import MemeModal from './MemeModal';
 
 class Meme extends React.Component {
