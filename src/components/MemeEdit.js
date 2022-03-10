@@ -8,9 +8,10 @@ class MemeEdit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentMeme: ''
+      currentMeme: this.props.currentMeme || ''
     }
   }
+
   saveToDb = async (meme, boxes) => {
     try {
       let newMeme = {
@@ -24,10 +25,11 @@ class MemeEdit extends React.Component {
       let storedMeme = await axios.post(url, newMeme);
       this.props.handleUpdateCurrentMeme(storedMeme.data);
     } catch (error) {
-      console.log(error); 
-      
+      console.log(error);
+
     }
   }
+
   sendMemeRequest = async (requestBody) => {
     try {
       let meme = await axios({
@@ -57,10 +59,15 @@ class MemeEdit extends React.Component {
       template_id: this.props.template.id,
       boxes: boxes
     }
-    this.sendMemeRequest(requestObj);
+    if (this.state.currentMeme === '') {
+      this.sendMemeRequest(requestObj)
+    } else {
+      console.log('Meme PUT request under construction')
+    }
   }
 
   render() {
+    console.log('MemeEdit state: ',this.state);
     let boxCount = this.props.template.box_count;
     let formControls = [];
     for (let i = 1; i <= boxCount; i++) {
@@ -75,7 +82,11 @@ class MemeEdit extends React.Component {
     return (
       <Form onSubmit={this.handleSaveMeme}>
         {formControls}
-        <Button className = "mt-1" type='submit'>Save</Button>
+        <Button className="mt-1" type='submit'>Save</Button>
+        {
+          this.state.currentMeme &&
+          <Button className='mt-1 btn btn-danger float-end'>Placeholder Delete</Button>
+        }
       </Form>
     )
   }
