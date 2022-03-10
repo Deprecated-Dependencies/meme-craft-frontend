@@ -41,15 +41,6 @@ class App extends React.Component {
     return (
       <>
         <Header />
-        {this.props.auth0.isAuthenticated ?
-          (
-          <>
-            <button onClick={this.printToken}>Button</button>
-            <LogoutButton />
-          </>
-          ) :
-          null
-        }
         <Router>
           <Routes>
             <Route path="/" element={<Body />} />

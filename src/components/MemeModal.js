@@ -3,6 +3,7 @@ import { Modal } from 'react-bootstrap';
 import MemeEdit from './MemeEdit';
 import MemeDisplay from './MemeDisplay';
 import SocialLinks from './SocialLinks';
+import Button from 'react-bootstrap/Button';
 
 
 class MemeModal extends React.Component {
@@ -10,14 +11,15 @@ class MemeModal extends React.Component {
     super(props);
     this.state = {
       currentMeme: '',
-      template: this.props.template
+      template: this.props.template,
+      displayEditForm: false
     };
   }
 
 handleUpdateCurrentMeme = (currentMeme) => {
   this.setState({
     currentMeme: currentMeme,
-    template: null
+    displayEditForm: false
   });
 }
 
@@ -41,11 +43,12 @@ handleUpdateCurrentMeme = (currentMeme) => {
             template={this.state.template}
             currentMeme={this.state.currentMeme}
           />
-          { this.state.template &&
+          {this.state.displayEditForm ?
           <MemeEdit 
           template={this.state.template}
           handleUpdateCurrentMeme={this.handleUpdateCurrentMeme}
-          />
+          /> : <Button onClick={() => this.setState({displayEditForm: true})}>Edit</Button>
+
         }
         </Modal.Body>
       </Modal>

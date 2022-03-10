@@ -15,6 +15,7 @@ class Meme extends React.Component {
   handleModalClose = (event) => this.setState({ showModal: false })
 
   render() {
+    console.log(this.props.template);
     return (
       <Col>
         <Card style={{ width: "18rem" }}>

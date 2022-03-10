@@ -12,7 +12,6 @@ class ImageGallery extends React.Component {
     let memes = this.props.memes.map((meme) => (
       <Meme key={meme.id} url={meme.url} name={meme.name} template={meme} />
     ));
-
     return (
       <>
         <h3>Gallery</h3>
