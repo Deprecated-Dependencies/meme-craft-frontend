@@ -25,13 +25,12 @@ class Body extends React.Component {
 
   render() {
     return (
-    <main>
-      <h2>Body</h2>
-      <ImageGallery 
-      getMemes={this.getMemes}
-      memes={this.state.memes}
-      />
-    </main>
+      <main>
+        <ImageGallery
+          getMemes={this.getMemes}
+          memes={this.state.memes}
+        />
+      </main>
     );
   }
 }
