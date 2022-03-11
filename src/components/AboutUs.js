@@ -1,5 +1,5 @@
 import React from 'react';
-import Author from './Author'
+import Author from './Author';
 import bradyAlt from '../img/brady-altImage.jpg';
 import brady from '../img/brady.jpg';
 import harveyAlt from '../img/harvey-altImage.jpg';

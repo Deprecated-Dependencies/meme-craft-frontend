@@ -8,18 +8,17 @@ class Meme extends React.Component {
     this.state = { showModal: false }
   }
 
-  clickHandler = (event) => {
+  handleOnClick = (event) => {
     this.setState({ showModal: true })
-  }
+  };
 
-  handleModalClose = (event) => this.setState({ showModal: false })
+  handleModalClose = (event) => this.setState({ showModal: false });
 
   render() {
-
     return (
       <div>
         <Card>
-          <Card.Img src={this.props.url} onClick={this.clickHandler} />
+          <Card.Img src={this.props.url} onClick={this.handleOnClick} />
           <Card.Body>
             {this.props.name}
           </Card.Body>
