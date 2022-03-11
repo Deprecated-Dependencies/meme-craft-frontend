@@ -24,7 +24,6 @@ class MemeModal extends React.Component {
   }
 
   render() {
-    //console.log('MemeModal state: ', this.state);
     return (
       <Modal show={this.props.show} onHide={this.props.handleModalClose} contentClassName='w-auto'>
         <Modal.Header closeButton>{this.props.name}</Modal.Header>
@@ -52,7 +51,6 @@ class MemeModal extends React.Component {
               handleModalClose={this.props.handleModalClose}
             /> :
             <Button onClick={() => this.setState({ displayEditForm: true })} >Edit</Button>
-
           }
         </Modal.Body>
       </Modal>
