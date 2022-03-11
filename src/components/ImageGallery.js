@@ -1,46 +1,51 @@
-import React from 'react';
-import axios from 'axios';
-import { Container, Row } from 'react-bootstrap';
-import Meme from './Meme';
+import React from "react";
+
+import Meme from "./Meme";
+import Masonry from 'react-masonry-css';
 
 class ImageGallery extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      memes: []
-    }
-  }
-
-  getMemes = async () => {
-    try {
-      let results = await axios(`${process.env.REACT_APP_SERVER_URL}/memes`);
-      this.setState({
-        memes: results.data.data.memes
-      })
-    } catch (error) {
-      console.log('Error getting memes', error.message)
-    }
-    console.log(this.state.memes);
-  }
 
   componentDidMount() {
-    this.getMemes();
+    this.props.getMemes();
+  }
+  refreshGallery = () => {
+    this.props.getMemes();
   }
 
   render() {
-    let memes = this.state.memes.map(meme => (
-      <Meme key={meme.id} url={meme.url} name={meme.name} template={meme} />
-    ))
+    let memes = this.props.memes.map((meme) => (
+      meme.hasOwnProperty('template') ? 
+      <Meme 
+        key={meme._id} 
+        url={meme.url} 
+        name={meme.template.name} 
+        template={meme.template} 
+        userMeme={meme}
+        refreshGallery={this.refreshGallery}
+      /> :
+      <Meme 
+        key={meme.id} 
+        url={meme.url}
+        name={meme.name}
+        template={meme}
+        refreshGallery={this.refreshGallery}
+      />
+    ));
+
+    const breakpointColumnsObj = {
+      default: 4,
+      1100: 3,
+      700: 2,
+      500: 1
+    };
 
     return (
-      <>
-        <h3>Gallery</h3>
-        <Container>
-          <Row xs={1} sm={2} md={3}>
-            {memes}
-          </Row>
-        </Container>
-      </>
+      <Masonry
+        breakpointCols={breakpointColumnsObj}
+        className="my-masonry-grid"
+        columnClassName="my-masonry-grid_column">
+        {memes}
+      </Masonry>
     );
   }
 }

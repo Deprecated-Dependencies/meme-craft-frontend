@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Col } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import MemeModal from './MemeModal';
 
 class Meme extends React.Component {
@@ -15,9 +15,10 @@ class Meme extends React.Component {
   handleModalClose = (event) => this.setState({ showModal: false })
 
   render() {
+
     return (
-      <Col>
-        <Card style={{ width: "18rem" }}>
+      <div>
+        <Card>
           <Card.Img src={this.props.url} onClick={this.clickHandler} />
           <Card.Body>
             {this.props.name}
@@ -27,10 +28,12 @@ class Meme extends React.Component {
             handleModalClose={this.handleModalClose}
             url={this.props.url}
             name={this.props.name}
+            userMeme={this.props.userMeme}
             template={this.props.template}
+            refreshGallery={this.props.refreshGallery}
           />
         </Card>
-      </Col>
+      </div>
     );
   }
 }
