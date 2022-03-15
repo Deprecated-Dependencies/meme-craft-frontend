@@ -1,16 +1,15 @@
 import React from "react";
-
 import Meme from "./Meme";
 import Masonry from 'react-masonry-css';
 
 class ImageGallery extends React.Component {
-
   componentDidMount() {
     this.props.getMemes();
   }
+
   refreshGallery = () => {
     this.props.getMemes();
-  }
+  };
 
   render() {
     let memes = this.props.memes.map((meme) => (
@@ -31,7 +30,6 @@ class ImageGallery extends React.Component {
         refreshGallery={this.refreshGallery}
       />
     ));
-
     const breakpointColumnsObj = {
       default: 4,
       1100: 3,

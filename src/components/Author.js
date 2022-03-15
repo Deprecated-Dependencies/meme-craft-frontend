@@ -11,17 +11,14 @@ class Author extends React.Component {
   }
 
   handleMouseOut = (event) => {
-    console.log(event.target.src);
     this.setState({ imgSource: this.props.image })
-  }
+  };
 
   handleMouseOver = (event) => {
-    console.log(event.target.src);
     this.setState({ imgSource: this.props.altImage })
-  }
+  };
 
   render() {
-    console.log(this.state.imgSource)
     return (
       <Container>
         <h3>{this.props.name}</h3>

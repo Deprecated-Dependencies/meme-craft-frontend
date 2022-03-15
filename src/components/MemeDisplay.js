@@ -1,14 +1,13 @@
 import React from 'react';
 import { Image } from 'react-bootstrap';
 
-
-
 class MemeDisplay extends React.Component {
 
   render() {
     let url = this.props.currentMeme ?
       this.props.currentMeme.url :
-      this.props.url
+      this.props.url;
+      
     return (
       <>
         <Image
